@@ -3,7 +3,6 @@ import { fetchMasterPosts, fetchDetailPosts } from '../Services/reddit';
 import Slide from './Slide';
 
 const Carousel = () => {
-    const [isOpen, updateIsOpen] = useState(false);
     const [currentImageIndex, updateCurrentImageIndex] = useState(0);
     const [posts, updateCurrentPosts] = useState([]);
 
@@ -14,15 +13,16 @@ const Carousel = () => {
 
     useEffect(() => {
         fetchPosts();
-    });
+    }, []);
 
     return (
         //TODO: Build Carousel and onClick event with modal
-        <div className="carousel">
-            <span>Left</span>
-            <Slide posts={posts} index={currentImageIndex} />
-            <span>Right</span>
-            <button>Show Details</button>
+        <div className="carousel" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', margin: 'auto' }}>
+                <button onClick={() => updateCurrentImageIndex(currentImageIndex - 1)}>Prev</button>
+                <Slide posts={posts} index={currentImageIndex} />
+                <button onClick={() => updateCurrentImageIndex(currentImageIndex + 1)}> Next</button>
+            </div>
         </div>
     );
 };

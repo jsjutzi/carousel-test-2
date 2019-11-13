@@ -3,30 +3,27 @@ import PropTypes from 'prop-types';
 import { fetchDetailPosts } from '../Services/reddit';
 
 const Slide = props => {
+    const [showDetails, updateShowDetails] = useState(false);
     const [post, updatePost] = useState({});
-    const { posts, index } = props;
 
-    const originalPost = async () => {
-        const body = await fetchDetailPosts(post.id).then(res => updatePost(res));
-        console.log(post);
-    };
-
-    // TODO: Get good at effects
     // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const fetchPost = await originalPost();
-    //         return fetchPost
+    //     const fetchOriginalPost = async () => {
+    //         const originalPost = props.posts[props.index].id
+    //         console.log(originalPost, 'id')
+    //         const body = await fetchDetailPosts(originalPost).then(res => console.log(res))
+    //         console.log(body)
+    //     };
+    //     if (props.posts.length !== 0) {
+    //         fetchOriginalPost();
     //     }
-    //     updatePost(fetchData())
-    //     console.log(updatePost)
-    // }, [])
+    // })
 
     return (
-        //TODO: Build Slide and onClick event with modal
-
         <article className="slide">
+            <p>Some frigging text</p>
             <img src={post.url} />
             <p>{post.title}</p>
+            <button onClick={() => updateShowDetails(!showDetails)}>Show Details</button>
         </article>
     );
 };
