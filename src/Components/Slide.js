@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {fetchDetailPosts} from '../Services/reddit'
+import React, { useState, useEffect } from 'react';
+import { fetchDetailPosts } from '../Services/reddit';
 
-const Slide = (props) => {
-    const [post, updatePost] = useState({})
-    const {posts, index} = props;
-    
+const Slide = props => {
+    const [post, updatePost] = useState({});
+    const { posts, index } = props;
+
     const originalPost = async () => {
-        const body = await fetchDetailPosts(post.id)
-        .then(res => updatePost(res));
-        console.log(post)
-    }
+        const body = await fetchDetailPosts(post.id).then(res => updatePost(res));
+        console.log(post);
+    };
 
     // TODO: Get good at effects
     // useEffect(() => {
@@ -23,12 +22,18 @@ const Slide = (props) => {
 
     return (
         //TODO: Build Slide and onClick event with modal
-        
+
         <article className="slide">
-            <img src={post.url}/>
+            <img src={post.url} />
             <p>{post.title}</p>
         </article>
-    )
-}
+    );
+};
 
-export default Slide
+Slide.propTypes = {
+    post: PropTypes.object,
+    posts: PropTypes.array,
+    index: PropTypes.number,
+};
+
+export default Slide;
