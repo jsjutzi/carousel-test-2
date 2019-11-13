@@ -6,17 +6,15 @@ const Slide = props => {
     const [showDetails, updateShowDetails] = useState(false);
     const [post, updatePost] = useState({});
 
-    // useEffect(() => {
-    //     const fetchOriginalPost = async () => {
-    //         const originalPost = props.posts[props.index].id
-    //         console.log(originalPost, 'id')
-    //         const body = await fetchDetailPosts(originalPost).then(res => console.log(res))
-    //         console.log(body)
-    //     };
-    //     if (props.posts.length !== 0) {
-    //         fetchOriginalPost();
-    //     }
-    // })
+    useEffect(() => {
+        const fetchOriginalPost = async () => {
+            const originalPost = props.posts[props.index];
+            console.log(originalPost.id, 'id');
+            const body = await fetchDetailPosts(originalPost.id).then(res => console.log(res));
+            console.log(body, 'body');
+        };
+        fetchOriginalPost();
+    }, []);
 
     return (
         <article className="slide">
