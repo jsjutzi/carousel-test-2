@@ -2,7 +2,7 @@ export const fetchMasterPosts = async () => {
     const response = await fetch('https://www.reddit.com/r/apple.json');
     const data = await response.json();
     const posts = data.data.children;
-    const filteredPosts = posts.map((post:any) => {
+    const filteredPosts = posts.map((post: any) => {
         const {
             data: { title, url, id, thumbnail },
         } = post;

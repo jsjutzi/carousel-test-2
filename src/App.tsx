@@ -8,6 +8,6 @@ const App = (): ReactElement => {
             <Carousel />
         </div>
     );
-}
+};
 
 export default App;

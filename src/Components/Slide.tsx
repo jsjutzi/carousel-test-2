@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { fetchDetailPosts } from '../Services/reddit';
 
 const Slide: React.SFC<SlideProps> = props => {
     const [showDetails, updateShowDetails] = useState(false);
-    const [post, updatePost] = useState({thumbnail: '', title: ''});
-    const [thread, updateThread] = useState("");
+    const [post, updatePost] = useState({ thumbnail: '', title: '' });
+    const [thread, updateThread] = useState('');
 
     useEffect(() => {
         const originalPost = props.posts[props.index];
@@ -35,8 +34,8 @@ const Slide: React.SFC<SlideProps> = props => {
 };
 
 interface SlideProps {
-    index: number,
-    posts: Array<any>
-  }
+    index: number;
+    posts: Array<any>;
+}
 
 export default Slide;

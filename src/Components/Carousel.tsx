@@ -35,5 +35,4 @@ const Carousel = (): ReactElement => {
     );
 };
 
-
 export default Carousel;
