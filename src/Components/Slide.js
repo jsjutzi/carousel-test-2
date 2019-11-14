@@ -9,6 +9,7 @@ const Slide = props => {
 
     useEffect(() => {
         const originalPost = props.posts[props.index];
+        updateThread('Fetching...');
         updatePost(originalPost);
         updateShowDetails(false);
         const fetchOriginalPost = async () => {
@@ -16,7 +17,7 @@ const Slide = props => {
             updateThread(body);
         };
         fetchOriginalPost();
-    }, [props.index]);
+    }, [props.index, props.posts]);
 
     const populateComments = () => {
         return <div style={{ width: '600px', maxHeight: '150px', overflow: 'scroll' }}>{thread}</div>;
@@ -24,7 +25,7 @@ const Slide = props => {
 
     return (
         <article className="slide" style={{ padding: '15px', width: '100%' }}>
-            <img src={post.thumbnail} alt="Image Not Found" />
+            <img src={post.thumbnail} alt="Not Available" />
             <p>{post.title}</p>
             {showDetails && populateComments()}
             <button onClick={() => updateShowDetails(!showDetails)}>Show Details</button>

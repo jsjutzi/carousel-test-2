@@ -16,8 +16,10 @@ const Carousel = () => {
     }, []);
 
     const changeSlide = index => {
-        if (index > posts.length - 1 || index < 0) {
+        if (index > posts.length - 1) {
             updateCurrentImageIndex(0);
+        } else if (index < 0) {
+            updateCurrentImageIndex(posts.length - 1);
         } else {
             updateCurrentImageIndex(index);
         }
