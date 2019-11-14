@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { fetchDetailPosts } from '../Services/reddit';
 
-const Slide = props => {
+const Slide: React.SFC<SlideProps> = props => {
     const [showDetails, updateShowDetails] = useState(false);
-    const [post, updatePost] = useState({});
-    const [thread, updateThread] = useState(null);
+    const [post, updatePost] = useState({thumbnail: '', title: ''});
+    const [thread, updateThread] = useState("");
 
     useEffect(() => {
         const originalPost = props.posts[props.index];
-        updateThread('Fetching...');
+        const fetching = 'Fetching...';
+        updateThread(fetching);
         updatePost(originalPost);
         updateShowDetails(false);
         const fetchOriginalPost = async () => {
@@ -33,10 +34,9 @@ const Slide = props => {
     );
 };
 
-Slide.propTypes = {
-    post: PropTypes.object,
-    posts: PropTypes.array,
-    index: PropTypes.number,
-};
+interface SlideProps {
+    index: number,
+    posts: Array<any>
+  }
 
 export default Slide;

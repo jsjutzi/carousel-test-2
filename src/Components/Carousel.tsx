@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { fetchMasterPosts } from '../Services/reddit';
 import Slide from './Slide';
 
-const Carousel = () => {
+const Carousel = (): ReactElement => {
     const [currentImageIndex, updateCurrentImageIndex] = useState(0);
     const [posts, updateCurrentPosts] = useState(null);
 
@@ -15,7 +15,7 @@ const Carousel = () => {
         fetchPosts();
     }, []);
 
-    const changeSlide = index => {
+    const changeSlide = (index: number) => {
         if (index > posts.length - 1) {
             updateCurrentImageIndex(0);
         } else if (index < 0) {
@@ -34,5 +34,6 @@ const Carousel = () => {
         </div>
     );
 };
+
 
 export default Carousel;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Carousel from './Components/Carousel';
 import './App.css';
 
-function App() {
+const App = (): ReactElement => {
     return (
         <div className="App">
             <Carousel />
