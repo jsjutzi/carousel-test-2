@@ -6,7 +6,6 @@ function App() {
     return (
         <div className="App">
             <Carousel />
-            <p>In Progress ....</p>
         </div>
     );
 }

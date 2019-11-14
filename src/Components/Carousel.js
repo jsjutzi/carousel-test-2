@@ -3,7 +3,7 @@ import { fetchMasterPosts } from '../Services/reddit';
 import Slide from './Slide';
 
 const Carousel = () => {
-    const [currentImageIndex, updateCurrentImageIndex] = useState(5);
+    const [currentImageIndex, updateCurrentImageIndex] = useState(0);
     const [posts, updateCurrentPosts] = useState(null);
 
     const fetchPosts = async () => {
@@ -15,12 +15,19 @@ const Carousel = () => {
         fetchPosts();
     }, []);
 
+    const changeSlide = index => {
+        if (index > posts.length - 1 || index < 0) {
+            updateCurrentImageIndex(0);
+        } else {
+            updateCurrentImageIndex(index);
+        }
+    };
     return (
-        <div className="carousel" style={{ display: 'flex', flexDirection: 'column', width: '500px', margin: 'auto' }}>
+        <div className="carousel" style={{ display: 'flex', flexDirection: 'column', width: '800px', margin: 'auto' }}>
             <div style={{ display: 'flex', flexDirection: 'row', margin: 'auto' }}>
-                <button onClick={() => updateCurrentImageIndex(currentImageIndex - 1)}>Prev</button>
+                <button onClick={() => changeSlide(currentImageIndex - 1)}>Prev</button>
                 {posts && <Slide posts={posts} index={currentImageIndex} />}
-                <button onClick={() => updateCurrentImageIndex(currentImageIndex + 1)}> Next</button>
+                <button onClick={() => changeSlide(currentImageIndex + 1)}> Next</button>
             </div>
         </div>
     );
