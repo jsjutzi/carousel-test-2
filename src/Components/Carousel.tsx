@@ -15,7 +15,7 @@ const Carousel = (): ReactElement => {
         fetchPosts();
     }, []);
 
-    const changeSlide = (index: number) => {
+    const changeSlide = <T1 extends number>(index: T1) => {
         if (index > posts.length - 1) {
             updateCurrentImageIndex(0);
         } else if (index < 0) {
@@ -24,6 +24,7 @@ const Carousel = (): ReactElement => {
             updateCurrentImageIndex(index);
         }
     };
+
     return (
         <div className="carousel" style={{ display: 'flex', flexDirection: 'column', width: '800px', margin: 'auto' }}>
             <div style={{ display: 'flex', flexDirection: 'row', margin: 'auto' }}>
